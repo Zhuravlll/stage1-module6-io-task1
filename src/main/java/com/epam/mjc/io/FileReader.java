@@ -11,7 +11,7 @@ public class FileReader {
         try {
             return printFileWithBuffer(filePath);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -25,7 +25,7 @@ public class FileReader {
                 temp.put(tempArr[0], tempArr[1]);
             }
         } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new FileNotFoundException();
             }
         return new Profile(temp.get("Name"), Integer.parseInt(temp.get("Age")), temp.get("Email"), Long.parseLong(temp.get("Phone")));
     }
